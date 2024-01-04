@@ -8,7 +8,19 @@
     <changeSet author="renaud" id="1">  
         <createTable tableName="colis">  
             <column name="id"  type="CHAR(36)">
-                <constraints primaryKey="true"/>
+                <constraints primaryKey="true" />
+            </column>
+            <column name="email"  type="VARCHAR(320)">
+                <constraints nullable="false" />
+            </column>
+            <column name="delivery_person_id"  type="VARCHAR(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="details"  type="VARCHAR(1024)">
+                <constraints nullable="true" />
+            </column>
+            <column name="address"  type="VARCHAR(1024)">
+                <constraints nullable="false" />
             </column>
         </createTable>  
     </changeSet>

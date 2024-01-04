@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.sncf.d2d.colibri.colis.models.Colis;
 import fr.sncf.d2d.colibri.colis.usecases.CreateColisParams;
 import fr.sncf.d2d.colibri.colis.usecases.CreateColisUseCase;
 
@@ -19,7 +20,7 @@ public class ColisRestController {
     }
     
     @PostMapping
-    public void createColis(@RequestBody CreateColisBody body){
+    public Colis createColis(@RequestBody CreateColisBody body){
 
         final var params = new CreateColisParams();
         params.setAddress(body.getAddress());
@@ -27,8 +28,6 @@ public class ColisRestController {
         params.setDeliveryPersonId(body.getDeliveryPersonId());
         params.setEmail(body.getEmail());
 
-        this.createColisUseCase.create(params);
-
-        
+        return this.createColisUseCase.create(params);
     }
 }

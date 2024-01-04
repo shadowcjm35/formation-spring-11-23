@@ -11,7 +11,7 @@ public class CreateColisParams {
     private String deliveryPersonId;
 
     public String getAddress() {
-        return address;
+        return this.address;
     }
 
     public void setAddress(String address) {
@@ -19,7 +19,7 @@ public class CreateColisParams {
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     public void setEmail(String email) {
@@ -27,7 +27,7 @@ public class CreateColisParams {
     }
 
     public String getDetails() {
-        return details;
+        return this.details;
     }
 
     public void setDetails(String details) {
@@ -35,7 +35,7 @@ public class CreateColisParams {
     }
 
     public String getDeliveryPersonId() {
-        return deliveryPersonId;
+        return this.deliveryPersonId;
     }
 
     public void setDeliveryPersonId(String deliveryPersonId) {
