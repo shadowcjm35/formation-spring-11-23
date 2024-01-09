@@ -1,5 +1,8 @@
 package fr.sncf.d2d.colibri;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import fr.sncf.d2d.colibri.colis.rest.CreateColisBody;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Component;
@@ -7,26 +10,14 @@ import org.springframework.stereotype.Component;
 @SpringBootApplication
 public class ColibriApplication {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws JsonProcessingException {
 		final var context = SpringApplication.run(ColibriApplication.class, args);
-		final var monPremierBean = context.getBean(MonPremierBean.class);
-		System.out.println(monPremierBean.getClass().getCanonicalName());
-		final var mondeuxiemeBean = context.getBean(MonDeuxiemeBean.class);
-		System.out.println(mondeuxiemeBean.getClass().getCanonicalName());
-	}
+		final var objectMapper = context.getBean(ObjectMapper.class);
 
-	@Component
-	public static class MonPremierBean {
-
-	}
-
-	@Component
-	public static class MonDeuxiemeBean {
-
-		private final MonPremierBean dependency;
-
-		public MonDeuxiemeBean(MonPremierBean dependency){
-			this.dependency = dependency;
-		}
+		final var json = "{}";
+		final var createColisBody = objectMapper.readValue(
+				json,
+				CreateColisBody.class);
+		System.out.println(createColisBody);
 	}
 }

@@ -1,0 +1,8 @@
+spring:
+  liquibase:
+    change-log: classpath:/liquibase-changelog.xml
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:file:/tmp/colibri.database
