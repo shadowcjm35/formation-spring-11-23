@@ -3,7 +3,6 @@ package fr.sncf.d2d.colibri.colis.usecases;
 import org.springframework.stereotype.Service;
 
 import fr.sncf.d2d.colibri.colis.models.Colis;
-import fr.sncf.d2d.colibri.colis.models.Colis.ColisBuilder;
 import fr.sncf.d2d.colibri.colis.persistence.ColisRepository;
 
 @Service
