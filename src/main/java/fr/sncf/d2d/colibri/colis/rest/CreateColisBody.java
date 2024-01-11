@@ -1,14 +1,32 @@
 package fr.sncf.d2d.colibri.colis.rest;
 
+import org.springframework.util.StringUtils;
+
+import jakarta.validation.constraints.AssertTrue;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+
 public class CreateColisBody {
     
+    @NotBlank
     private String address;
 
+    @Email
     private String email;
 
     private String details;
 
     private String deliveryPersonId;
+
+    @AssertTrue
+    private boolean validateDetails(){
+        return this.details == null || StringUtils.hasText(this.details);
+    }
+
+    @AssertTrue
+    private boolean validateDeliveryPersonId(){
+        return this.deliveryPersonId == null || StringUtils.hasText(this.deliveryPersonId);
+    }
 
     public String getAddress() {
         return this.address;

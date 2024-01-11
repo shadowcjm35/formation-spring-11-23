@@ -2,7 +2,8 @@ package fr.sncf.d2d.colibri.colis.models;
 
 import java.util.UUID;
 
-// TODO: créer des objets colis de manière scalable et élégante
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Colis {
 
     private UUID id;
@@ -42,7 +43,7 @@ public class Colis {
     public UUID getId(){
         return this.id;
     }
-    
+
     public void setId(UUID id){
         this.id = id;
     }
@@ -53,6 +54,8 @@ public class Colis {
 
     public static class ColisBuilder {
 
+        private UUID id;
+
         private String address;
 
         private String deliveryPersonId;
@@ -62,6 +65,11 @@ public class Colis {
         private String email;
 
         private ColisBuilder(){}
+
+        public ColisBuilder id(UUID id){
+            this.id = id;
+            return this;
+        }
 
         public ColisBuilder address(String address){
             this.address = address;
@@ -84,7 +92,7 @@ public class Colis {
         }
 
         public Colis build(){
-            return new Colis(null, this.address, this.deliveryPersonId, this.details, this.email);
+            return new Colis(this.id, this.address, this.deliveryPersonId, this.details, this.email);
         }
     }
 }
